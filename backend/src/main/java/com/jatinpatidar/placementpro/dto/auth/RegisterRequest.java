@@ -1,4 +1,4 @@
-package com.jatinpatidar.placementpro.dto;
+package com.jatinpatidar.placementpro.dto.auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,7 +1,8 @@
 package com.jatinpatidar.placementpro.service;
 
-import com.jatinpatidar.placementpro.dto.RegisterRequest;
+import com.jatinpatidar.placementpro.dto.auth.RegisterRequest;
+import com.jatinpatidar.placementpro.dto.auth.RegisterResponse;
 
 public interface UserService {
-    void registerUser(RegisterRequest request);
+    RegisterResponse registerUser(RegisterRequest request);
 }
