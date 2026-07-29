@@ -4,6 +4,7 @@ import com.jatinpatidar.placementpro.dto.auth.RegisterRequest;
 import com.jatinpatidar.placementpro.dto.auth.RegisterResponse;
 import com.jatinpatidar.placementpro.entity.User;
 import com.jatinpatidar.placementpro.enums.Role;
+import com.jatinpatidar.placementpro.exceptions.EmailAlreadyExistsException;
 import com.jatinpatidar.placementpro.repository.UserRepository;
 import com.jatinpatidar.placementpro.service.UserService;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> existingUser = userRepository.findByEmail(request.getEmail());
 
         if(existingUser.isPresent()){
-            throw new RuntimeException("Email already registered");
+            throw new EmailAlreadyExistsException("Email already registered");
         }
 
         User user = new User();
@@ -36,7 +37,8 @@ public class UserServiceImpl implements UserService {
         User savedUser = userRepository.save(user);
 
         String message = "User registered successfully";
-        RegisterResponse registerResponse = new RegisterResponse(savedUser.getId(), savedUser.getFullName(), savedUser.getEmail(),savedUser.getRole(),message);
+        RegisterResponse registerResponse =
+                new RegisterResponse(savedUser.getId(), savedUser.getFullName(), savedUser.getEmail(),savedUser.getRole(),message);
 
         return registerResponse;
     }
