@@ -1,4 +1,4 @@
-package com.jatinpatidar.placementpro.dto.auth;
+package com.jatinpatidar.placementpro.dto.auth.response;
 
 import com.jatinpatidar.placementpro.enums.Role;
 import lombok.AllArgsConstructor;

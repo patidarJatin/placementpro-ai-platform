@@ -1,8 +1,8 @@
 package com.jatinpatidar.placementpro.controller;
 
 
-import com.jatinpatidar.placementpro.dto.auth.RegisterRequest;
-import com.jatinpatidar.placementpro.dto.auth.RegisterResponse;
+import com.jatinpatidar.placementpro.dto.auth.request.RegisterRequest;
+import com.jatinpatidar.placementpro.dto.auth.response.RegisterResponse;
 import com.jatinpatidar.placementpro.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

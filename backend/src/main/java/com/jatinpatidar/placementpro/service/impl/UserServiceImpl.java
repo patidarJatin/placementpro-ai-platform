@@ -1,7 +1,7 @@
 package com.jatinpatidar.placementpro.service.impl;
 
-import com.jatinpatidar.placementpro.dto.auth.RegisterRequest;
-import com.jatinpatidar.placementpro.dto.auth.RegisterResponse;
+import com.jatinpatidar.placementpro.dto.auth.request.RegisterRequest;
+import com.jatinpatidar.placementpro.dto.auth.response.RegisterResponse;
 import com.jatinpatidar.placementpro.entity.User;
 import com.jatinpatidar.placementpro.enums.Role;
 import com.jatinpatidar.placementpro.exceptions.EmailAlreadyExistsException;
