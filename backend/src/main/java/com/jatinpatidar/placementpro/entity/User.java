@@ -30,7 +30,6 @@ public class User {
     private String email;
 
     @NotBlank(message = "Password is required")
-    @Size(min = 8,max = 20,message = "Password must be between 8 and 20 characters")
     @Column(nullable = false,length = 255)
     private String password;
 
