@@ -3,7 +3,7 @@ package com.jatinpatidar.placementpro.controller;
 
 import com.jatinpatidar.placementpro.dto.auth.request.RegisterRequest;
 import com.jatinpatidar.placementpro.dto.auth.response.RegisterResponse;
-import com.jatinpatidar.placementpro.service.UserService;
+import com.jatinpatidar.placementpro.service.user.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

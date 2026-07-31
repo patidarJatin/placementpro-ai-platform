@@ -1,4 +1,4 @@
-package com.jatinpatidar.placementpro.dto.auth.response;
+package com.jatinpatidar.placementpro.dto.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

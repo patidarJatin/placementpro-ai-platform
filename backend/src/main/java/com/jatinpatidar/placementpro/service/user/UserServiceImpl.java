@@ -1,4 +1,4 @@
-package com.jatinpatidar.placementpro.service.impl;
+package com.jatinpatidar.placementpro.service.user;
 
 import com.jatinpatidar.placementpro.dto.auth.request.RegisterRequest;
 import com.jatinpatidar.placementpro.dto.auth.response.RegisterResponse;
@@ -6,7 +6,6 @@ import com.jatinpatidar.placementpro.entity.User;
 import com.jatinpatidar.placementpro.enums.Role;
 import com.jatinpatidar.placementpro.exceptions.EmailAlreadyExistsException;
 import com.jatinpatidar.placementpro.repository.UserRepository;
-import com.jatinpatidar.placementpro.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
