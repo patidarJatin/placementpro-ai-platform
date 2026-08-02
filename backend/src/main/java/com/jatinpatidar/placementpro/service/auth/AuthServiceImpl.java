@@ -5,6 +5,7 @@ import com.jatinpatidar.placementpro.dto.auth.response.LoginResponse;
 import com.jatinpatidar.placementpro.entity.User;
 import com.jatinpatidar.placementpro.exceptions.InvalidCredentialsException;
 import com.jatinpatidar.placementpro.repository.UserRepository;
+import com.jatinpatidar.placementpro.service.jwt.JwtService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
-    public AuthServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public AuthServiceImpl(JwtService jwtService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.jwtService = jwtService;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -33,7 +36,8 @@ public class AuthServiceImpl implements AuthService {
                 user.getId(),
                 user.getFullName(),
                 user.getEmail(),
-                user.getRole()
+                user.getRole(),
+                jwtService.generateToken(user)
         );
     }
 }
