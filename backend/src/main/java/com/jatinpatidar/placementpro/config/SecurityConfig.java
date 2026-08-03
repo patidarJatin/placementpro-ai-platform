@@ -56,6 +56,8 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(authorize -> {
                     authorize.requestMatchers("/api/v1/auth/**").permitAll();
+                    authorize.requestMatchers("/api/v1/admin/**")
+                            .hasRole("ADMIN");
                     authorize.anyRequest().authenticated();
                 })
                 .authenticationProvider(authenticationProvider())
