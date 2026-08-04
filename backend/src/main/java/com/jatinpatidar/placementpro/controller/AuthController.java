@@ -1,11 +1,14 @@
 package com.jatinpatidar.placementpro.controller;
 
 
+import com.jatinpatidar.placementpro.dto.auth.request.ForgotPasswordRequest;
 import com.jatinpatidar.placementpro.dto.auth.request.LoginRequest;
 import com.jatinpatidar.placementpro.dto.auth.request.RegisterRequest;
+import com.jatinpatidar.placementpro.dto.auth.response.ForgotPasswordResponse;
 import com.jatinpatidar.placementpro.dto.auth.response.LoginResponse;
 import com.jatinpatidar.placementpro.dto.auth.response.RegisterResponse;
 import com.jatinpatidar.placementpro.service.auth.AuthService;
+import com.jatinpatidar.placementpro.service.passwordReset.PasswordResetService;
 import com.jatinpatidar.placementpro.service.user.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -18,10 +21,13 @@ public class AuthController {
 
     private final UserService userService;
     private final AuthService authService;
+    private final PasswordResetService passwordResetService;
 
-    public AuthController(AuthService authService, UserService userService) {
+    public AuthController(AuthService authService, UserService userService,
+                          PasswordResetService passwordResetService) {
         this.authService = authService;
         this.userService = userService;
+        this.passwordResetService = passwordResetService;
     }
 
     @PostMapping("/register")
@@ -36,4 +42,9 @@ public class AuthController {
         return ResponseEntity.ok(loginResponse);
     }
 
+    @PostMapping("/forgot-password")
+    public ResponseEntity<ForgotPasswordResponse> forgetPassword(@Valid @RequestBody ForgotPasswordRequest request){
+        ForgotPasswordResponse forgotPasswordResponse = passwordResetService.forgotPassword(request.getEmail());
+        return ResponseEntity.ok(forgotPasswordResponse);
+    }
 }
