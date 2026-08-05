@@ -79,6 +79,7 @@ public class PasswordResetServiceImpl implements PasswordResetService {
 
         // Step 5: Send the password reset email
         emailService.sendPasswordResetEmail(
+                user.getFullName(),
                 user.getEmail(),
                 token
         );
