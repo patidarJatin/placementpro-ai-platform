@@ -3,6 +3,7 @@ package com.jatinpatidar.placementpro.service.user;
 import com.jatinpatidar.placementpro.dto.auth.request.RegisterRequest;
 import com.jatinpatidar.placementpro.dto.auth.response.RegisterResponse;
 import com.jatinpatidar.placementpro.entity.User;
+import com.jatinpatidar.placementpro.enums.AuthProvider;
 import com.jatinpatidar.placementpro.enums.Role;
 import com.jatinpatidar.placementpro.exceptions.EmailAlreadyExistsException;
 import com.jatinpatidar.placementpro.repository.UserRepository;
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail((request.getEmail()));
         user.setPassword(request.getPassword());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-
+        user.setProvider(AuthProvider.LOCAL);
         user.setRole(Role.STUDENT);
 
         User savedUser = userRepository.save(user);

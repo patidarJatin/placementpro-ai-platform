@@ -1,5 +1,6 @@
 package com.jatinpatidar.placementpro.entity;
 
+import com.jatinpatidar.placementpro.enums.AuthProvider;
 import com.jatinpatidar.placementpro.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -37,6 +38,10 @@ public class User implements UserDetails {
     @NotBlank(message = "Password is required")
     @Column(nullable = false,length = 255)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private AuthProvider provider = AuthProvider.LOCAL;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
