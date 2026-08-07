@@ -10,10 +10,13 @@ import com.jatinpatidar.placementpro.dto.auth.response.RegisterResponse;
 import com.jatinpatidar.placementpro.service.auth.AuthService;
 import com.jatinpatidar.placementpro.service.passwordReset.PasswordResetService;
 import com.jatinpatidar.placementpro.service.user.UserService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -46,5 +49,10 @@ public class AuthController {
     public ResponseEntity<ForgotPasswordResponse> forgetPassword(@Valid @RequestBody ForgotPasswordRequest request){
         ForgotPasswordResponse forgotPasswordResponse = passwordResetService.forgotPassword(request.getEmail());
         return ResponseEntity.ok(forgotPasswordResponse);
+    }
+
+    @GetMapping("/google/login")
+    public void googleLogin(HttpServletResponse response) throws IOException {
+        response.sendRedirect("/oauth2/authorization/google");
     }
 }
