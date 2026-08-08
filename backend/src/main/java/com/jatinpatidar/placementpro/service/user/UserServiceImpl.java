@@ -2,11 +2,14 @@ package com.jatinpatidar.placementpro.service.user;
 
 import com.jatinpatidar.placementpro.dto.auth.request.RegisterRequest;
 import com.jatinpatidar.placementpro.dto.auth.response.RegisterResponse;
+import com.jatinpatidar.placementpro.dto.profile.response.UserProfileResponse;
 import com.jatinpatidar.placementpro.entity.User;
 import com.jatinpatidar.placementpro.enums.AuthProvider;
 import com.jatinpatidar.placementpro.enums.Role;
 import com.jatinpatidar.placementpro.exceptions.EmailAlreadyExistsException;
 import com.jatinpatidar.placementpro.repository.UserRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -47,5 +50,17 @@ public class UserServiceImpl implements UserService {
         return registerResponse;
     }
 
+    @Override
+    public UserProfileResponse getCurrentUserProfile(){
+       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+       User user = (User) authentication.getPrincipal();
+       user.getId();
+       user.getFullName();
+
+       UserProfileResponse userProfileResponse = new UserProfileResponse(
+               user.getId(), user.getFullName()
+       );
+       return userProfileResponse;
+    }
 
 }
